@@ -1,0 +1,84 @@
+body {
+    font-family: "Merriweather", sans-serif !important;
+}
+
+.welcome h3 {
+    color: grey;
+}
+
+h3.date {
+    font-size: 1em;
+    text-align: center;
+    color: white;
+}
+
+.heading {
+    height: 60px !important;
+}
+
+.navbar-brand {
+    font-size: 2.5em;
+}
+.navbar {
+    background-color: #d4418e;
+    background-image: linear-gradient(360deg, rgba(212, 65, 142, 1), rgba(6, 82, 197, 1));
+}
+
+p {
+    color: white;
+}
+
+.sidebar {
+    min-height: calc(100vh - 90px);
+}
+
+.card {
+    width: 110%;
+    height: 20%;
+    background-color: rgba(212, 65, 142, 0.3);
+    background-image: linear-gradient(360deg, rgba(212, 65, 142, 0.7)5% ,rgba(6, 82, 197, 0.8)75%);
+}
+
+.low {
+    background-color: green;
+    color: white;
+}
+
+.moderate {
+    background-color: yellow;
+    color: grey;
+}
+
+.high {
+    background-color: orange;
+    color: white;
+}
+
+.extreme {
+    background-color: red;
+    color: white;
+}
+
+.btn:hover {
+    color: white;
+    text-decoration:none;
+}
+
+#current-weather {
+    border: 1px solid;
+    border-color: lightgray;
+}
+
+#weather-icon {
+    position: relative;
+    top: -25px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mobile-text {
+    font-size:1rem;
+}
+
