@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var APIKey = "c3dc07b6ca30d039abcea5db3779f996"
+    var APIKey = "2ecfa6229a5aaf69a84a46cfcfa82c42";
 
     var userCity;
     var cityName;
