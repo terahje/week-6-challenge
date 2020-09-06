@@ -24,6 +24,10 @@ h3.date {
     background-image: linear-gradient(360deg, rgba(212, 65, 142, 1), rgba(6, 82, 197, 1));
 }
 
+#welcome p {
+    color: grey;
+}
+
 p {
     color: white;
 }
