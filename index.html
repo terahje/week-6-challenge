@@ -29,19 +29,31 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- search for city of left side -->
-                <aside class="col-3 d-block sidebar sidebar-sticky bg-light p-3 justify-content-center">
-                    <h3 id="search-text">
-                        Serach for a City:
-                    </h3>
-                    <form class="form-inline">
-                        <input class="form-control mb-3 mr-2" type="search" placeholder="Search" aria-label="Search" id="search" style="display: inline-block !important;"/>
-                        <button class="btn btn-primary mb-3" type="submit" id="search-button" style="display: inline-block !important;">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    </form>
-                    <!-- display the cities you've searched -->
-                    <div class="list-group-cities"></div>
-                </aside>
+                <aside
+                class="col-3 d-block sidebar sidebar-sticky bg-light p-3 justify-content-center"
+              >
+                <h3 id="search-text">Search for a City:</h3>
+                <form class="form-inline">
+                  <input
+                    class="form-control mb-3 mr-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    id="search"
+                    style="display: inline-block !important;"
+                  />
+                  <button
+                    class="btn btn-primary mb-3"
+                    type="submit"
+                    id="search-button"
+                    style="display: inline-block !important;"
+                  >
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+                 <!-- display the cities you've searched -->
+                <div class="list-group cities"></div>
+              </aside>
 
                 <!-- welcome page to instruct user how to get started -->
                 <section class="col-9 my-auto text-center" id="welcome">

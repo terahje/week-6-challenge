@@ -92,6 +92,81 @@ function getCurrentWeather() {
       });
 }
 
+function getForecast() {
+    var queryUrl =
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    userCity +
+    "&appid=" +
+    APIKey;
+
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+    }).then(function (response) {
+        var results = response.list;
+
+        // display 5 day forcast
+        var forecastCards = $(".forecast-card");
+        var t = 0;
+
+        // diplay date for the next 5 days
+        for (i = 0; i < forecastCards.length; i++) {
+            date = results[t].dt_txt.slice(0, 10);
+            formatDate();
+            forecastCards[i].querySelector(".date").textContent = date;
+
+            // each date is 8 indicies in results arr
+            t += 8;            
+        }
+
+        t = 0;
+        // display temp for 5 day forecast 
+        for (i = 0; i < forecastCards.length; i++) {
+            var tempK = results[t].main.temp;
+            var tempF = (tempK - 273.15) * 1.8 + 32;
+            forecastCards[i].querySelector(".temp").innerHTML =
+            "Temp: " + tempF.toFixed(1) + " &deg;" + "F";
+
+            t += 8;
+        }
+
+        t = 0;
+
+        // display humidity for 5 day forecast
+        for (i = 0; i < forecastCards.length; i++) {
+            var humidity = results[t].main.humidity;
+
+            forecastCards[i].querySelector(".humidity").textContent = 
+            "Humidity: " + humidity + "%";
+
+            t += 8;
+        }
+
+        t = 0;
+
+        // display weather icon for 5 day forecast
+        for (i = 0; i < forecastCards.length; i++) {
+            weather = results[t].weather[0].main;
+            renderIcons();
+            var iconEl = forecastCards[i].querySelector(".weather-icon");
+            iconEl.innerHTML = "";
+            weatherIcon = $("<img>").attr("src", imgUrl);
+            weatherIcon.attr("alt", "weahter icon");
+            weatherIcon.attr("style", "height: 60%; width 60%");
+            weatherIcon.appendTo(iconEl);
+
+            t += 8;
+        }
+    });
+}
+
+function formatDate() {
+    var year = date.slice(0, 4);
+    var month = date.slice(5, 7);
+    var day = date.slice(8,10);
+    date = month + "/" + day + "/" + year;
+}
+
 function storeCity() {
     allCities = JSON.parse(localStorage.getItem("cities"));
     if(allCities === null) {
@@ -179,6 +254,30 @@ function renderIcons() {
     imgUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
 }
 
+function loadCities() {
+    allCities = JSON.parse(localStorage.getItem("cities"));
+    cityBtns = $(".city-select");
 
+    if (allCities !== null) {
+        for (i = 0; i < allCities.length; i++) {
+            cityBtn = $("<button>").addClass(
+                "list-group-item list-group-item-action city-select"
+            );
+            cityBtn.text(allCities[i]);
+            $(".cities").append(cityBtn);
+        }
+    } else {
+        $(".cities").html("");
+    }
+}
+
+loadCities();
+
+$(document).on("click", ".city-select", function() {
+    userCity = $(this).text();
+    init();
+    getCurrentWeather();
+    getForecast();
+});
 
 });
